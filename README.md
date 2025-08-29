@@ -14,6 +14,14 @@ Para a construção do Server-Side foi utilizado o framework Express juntamente 
 
 Abra o terminal e insira "npm install"
 
+## Consigure o email da aplicação
+
+O sistema precisa de acesso a uma conta de email para enviar mensagens de alteração de senha e confirmação de cadastro aos usuários, por questões de segurança é altamente recomendado que você crie um email novo para tal tarefa, porém caso não desejar você ainda pode estar utilizando um email já existente
+
+Para permitir que a aplicação tenha acesso a um email é necessário ir para o arquivo "emailHandler.js" e insirir um email de sua propriedade juntamente de sua senha de aplicativo, mais detalhes de como criar e obter sua senha de aplicativo podem ser encontradas aqui: https://support.google.com/mail/answer/185833?hl=pt-BR#zippy=
+
+No momento que for feito a criação de sua senha de aplicativo não divulgue em nenhum local, com essa senha é possível ter acesso direto a sua conta!
+
 ## Configure o banco de dados MongoDB
 
 É possível realizar o download por aqui: https://www.mongodb.com/try/download/community-kubernetes-operator
