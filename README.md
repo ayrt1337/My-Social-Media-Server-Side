@@ -28,7 +28,7 @@ No momento que for feito a criação de sua senha de aplicativo não divulgue em
 
 Após feito o download e instalação é preciso realizar a criação do banco de dados "mySocialMedia", mais detalhes sobre como fazer isso pode ser encontrado aqui: https://medium.com/@ishvini2000/mongodb-compass-create-database-and-insert-document-c4f92c29e6a
 
-Lembre-se! É necessário apenas a criação do banco de dados, as coleções (tabelas) serão criadas automaticamente pelo código mediante utilização
+Lembre-se! É necessário apenas a criação do banco de dados, as coleções serão criadas automaticamente pelo código mediante utilização
 
 ## Inicie o back-end
 
