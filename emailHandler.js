@@ -8,7 +8,7 @@ const sendEmail = (email, reason) => {
         service: 'gmail',
         auth: {
             user: '<Insira um email>',
-            pass: '<Insira o passkey do email utilizado>'
+            pass: '<Insira a senha de aplicativo do email utilizado>'
         }
     })
 
