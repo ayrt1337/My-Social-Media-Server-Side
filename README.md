@@ -20,7 +20,7 @@ O sistema precisa de acesso a uma conta de email para enviar mensagens de altera
 
 Para permitir que a aplicação tenha acesso a um email é necessário ir para o arquivo "emailHandler.js" e insirir um email de sua propriedade juntamente de sua senha de aplicativo, mais detalhes de como criar e obter sua senha de aplicativo podem ser encontradas aqui: https://support.google.com/mail/answer/185833?hl=pt-BR#zippy=
 
-No momento que for feito a criação de sua senha de aplicativo não divulgue em nenhum local, com essa senha é possível ter acesso direto a sua conta!
+No momento que for feito a criação de sua senha de aplicativo não divulgue em nenhum local, com essa senha é possível ter acesso direto à sua conta!
 
 ## Configure o banco de dados MongoDB
 
