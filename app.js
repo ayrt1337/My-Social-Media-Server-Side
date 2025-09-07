@@ -300,7 +300,6 @@ app.get('/session', async (req, res) => {
                         res.status(200).json({
                             user: user,
                             img: img,
-                            _id: doc[0]._id.toString(),
                             notifications: unreadMessages == 0 ? undefined : unreadMessages
                         })
 
@@ -768,7 +767,7 @@ app.post('/getPost', async (req, res) => {
                 user: accountDoc[0].user,
                 text: postDoc[0].text,
                 likes: postDoc[0].likes.length,
-                comments: postDoc[0].comments > 0 ? commentsArr : postDoc[0].comments,
+                comments: postDoc[0].comments,
                 profileImg: accountDoc[0].profileImg,
                 createdAt: postDoc[0].createdAt,
                 isLiked: postDoc[0].likes.includes(userId) ? true : undefined
@@ -787,6 +786,36 @@ app.post('/getPost', async (req, res) => {
             status: 'fail'
         })
     }
+})
+
+app.post('/getComments', async (req, res) => {
+    const id = req.body.id
+    const userId = await verifyCookie(req.cookies.access_token)
+
+    const accountColl = database.collection('accounts')
+    const commentsArr = []
+    const commentsColl = database.collection('comments')
+    const commentsResult = commentsColl.find({ postId: id })
+    const commentsDoc = await commentsResult.toArray()
+
+    for await (doc of commentsDoc) {
+        const profileImgResult = accountColl.find({ _id: new ObjectId(doc.userId) }).project({ profileImg: 1, user: 1 })
+        const profileImgResultDoc = await profileImgResult.toArray()
+
+        if (doc.likes.includes(userId)) doc['isLiked'] = true
+
+        doc['profileImg'] = profileImgResultDoc[0].profileImg
+        doc['likes'] = doc.likes.length
+        doc['_id'] = doc._id.toString()
+        doc['user'] = profileImgResultDoc[0].user
+        delete doc['userId']
+
+        commentsArr.unshift(doc)
+    }
+
+    res.status(200).json({
+        comments: commentsArr
+    })
 })
 
 app.post('/createComment', async (req, res) => {
@@ -1218,6 +1247,8 @@ app.get('/userLikes/:userId', async (req, res) => {
                 postsDoc[0]['profileImg'] = profileImgDoc[0].profileImg
                 postsDoc[0]['user'] = profileImgDoc[0].user
 
+                delete postsDoc[0]['userId']
+
                 arrLikes.unshift(postsDoc[0])
             }
 
@@ -1233,6 +1264,8 @@ app.get('/userLikes/:userId', async (req, res) => {
                 commentsDoc[0]['isLiked'] = true
                 commentsDoc[0]['profileImg'] = profileImgDoc[0].profileImg
                 commentsDoc[0]['user'] = profileImgDoc[0].user
+
+                delete commentsDoc[0]['userId']
 
                 arrLikes.unshift(commentsDoc[0])
             }
@@ -1254,6 +1287,8 @@ app.get('/userLikes/:userId', async (req, res) => {
                 repliesDoc[0]['profileImg'] = profileImgDoc[0].profileImg
                 repliesDoc[0]['postId'] = commentsDoc[0].postId
                 repliesDoc[0]['user'] = profileImgDoc[0].user
+
+                delete repliesDoc[0]['userId']
 
                 arrLikes.unshift(repliesDoc[0])
             }

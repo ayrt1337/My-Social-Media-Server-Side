@@ -19,7 +19,7 @@ const sendEmail = (email, reason) => {
 
     if(reason == 'register'){
         message = {
-            from: 'testingapptestingapp803@gmail.com',
+            from: '<Insira o email utilizado>',
             to: `${email}`,
             subject: 'Confirmação de Email',
             html: `<p>Hello World!</p>
@@ -29,7 +29,7 @@ const sendEmail = (email, reason) => {
 
     else{
         message = {
-            from: 'testingapptestingapp803@gmail.com',
+            from: '<Insira o email utilizado>',
             to: `${email}`,
             subject: 'Trocar Senha',
             html: `<p>Hello World!</p>
