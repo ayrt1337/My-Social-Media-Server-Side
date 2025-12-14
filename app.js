@@ -133,17 +133,11 @@ app.post('/reset', async (req, res) => {
 
             else await coll.insertOne({ 'email': email, 'tokens': [token] })
         }
-
-        res.status(200).json({
-            status: 'success'
-        })
     }
 
-    else {
-        res.status(200).json({
-            status: 'fail'
-        })
-    }
+    res.status(200).json({
+        status: 'success'
+    })
 })
 
 app.post('/verifypassword', async (req, res) => {
@@ -1318,7 +1312,7 @@ app.get('/notifications', async (req, res) => {
         const accountResult2 = accountColl.find({ _id: new ObjectId(doc.clientId) }).project({ user: 1, profileImg: 1 })
         const accountDoc2 = await accountResult2.toArray()
 
-        doc['time'] = doc.time.substring(0, 9) + ' ' + doc.time.substring(10, 17)
+        doc['time'] = doc.time.substring(0, 11) + ' ' + doc.time.substring(12, 17)
         doc['clientImg'] = accountDoc2[0].profileImg
         doc['message'] = accountDoc2[0].user + ' ' + doc.message
 

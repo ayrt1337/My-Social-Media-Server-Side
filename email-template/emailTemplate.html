@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação de Alteração de Senha</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS reset simples, mas o principal deve ser INLINE */
+        body { margin: 0; padding: 0; }
+        /* Definindo estilos de corpo para clientes que suportam */
+        .body-styles { 
+            background-color: black; 
+            color: white; 
+            font-family: 'Open Sans', Arial, sans-serif; 
+            font-size: 16px;
+        }
+        /* Estilo do botão para reutilização */
+        .button {
+            text-decoration: none;
+            color: #ffffff !important;
+            background-color: #660eb3;
+            border-radius: 20px;
+            display: inline-block; /* Crucial para o botão */
+            padding: 16px 60px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="body-styles">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="black">
+        <tr>
+            <td align="center" style="padding: 30px;">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
+                    <tr>
+                        <td align="center" style="padding: 20px 0;">
+                            <img src="{{image}}" width="200" height="200" alt="Imagem" style="display: block; border: 0;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="color: white; padding: 0 0 40px 0;">
+                            <h1 style="font-weight: 300; margin: 20px 0 0 0; font-size: 30px;">
+                                {{title}}
+                            </h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="font-size: 16px; color: white; padding: 0 0 10px 0;">
+                            <p style="margin: 0;">{{text}}<span style="text-decoration: none; color: #660eb3;">{{email}}</span>{{text2}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="color: white; padding: 0 0 20px 0;">
+                            <p style="margin: 0; font-size: 16px;">
+                                <a href="{{link}}" style="color: #660eb3; text-decoration: none;">Clique aqui </a>
+                                caso o botão não venha a funcionar
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding: 30px 0;">
+                            <table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <td align="center" bgcolor="#660eb3" style="border-radius: 20px;">
+                                        <a href="{{link}}" class="button" target="_blank" style="font-weight: 300; text-decoration: none; color: #ffffff !important; background-color: #660eb3; border-radius: 20px; display: block; padding: 16px 60px;">
+                                            {{btn}}
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
