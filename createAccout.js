@@ -14,9 +14,11 @@ const createAccout = async (email, password) => {
 
     const year = date.getFullYear()
     const month = date.getMonth()
-    const day = date.getDate()
+    let day = date.getDate()
     let hours = date.getHours()
     let minutes = date.getMinutes()
+
+    if(day < 10) day = '0' + day
 
     if(hours < 10) hours = '0' + hours
 
