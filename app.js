@@ -621,10 +621,11 @@ app.post('/updateFollow', async (req, res) => {
 })
 
 app.post('/searchUsers', async (req, res) => {
+    const userId = await verifyCookie(req.cookies.access_token)
     const value = req.body.value
 
     const accoutColl = database.collection('accounts')
-    const result = accoutColl.find({ user: { $regex: `${value}`, $options: 'i' } }).project({ bio: 1, profileImg: 1, user: 1, _id: 0 })
+    const result = accoutColl.find({ user: { $regex: `${value}`, $options: 'i' } }).project({ bio: 1, profileImg: 1, user: 1, followers: 1, following: 1, _id: 0 })
     const resultDoc = await result.toArray()
 
     if (resultDoc.length > 4) {
@@ -634,7 +635,27 @@ app.post('/searchUsers', async (req, res) => {
     const arrUsers = []
 
     for await (const doc of resultDoc) {
-        arrUsers.push(doc)
+        if(doc.followers.includes(userId) && doc.following.includes(userId)){
+            doc['isFollowingAndFollower'] = true
+            arrUsers.unshift(doc)
+        }
+
+        else if(doc.followers.includes(userId)){
+            doc['isFollowing'] = true
+            arrUsers.unshift(doc)
+        }
+
+        else if(doc.following.includes(userId)){
+            doc['isFollowingMe'] = true
+            arrUsers.unshift(doc)
+        }
+
+        else{
+            arrUsers.push(doc)
+        }
+
+        delete doc['followers']
+        delete doc['following']
     }
 
     res.status(200).json({
