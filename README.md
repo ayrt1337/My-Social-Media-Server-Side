@@ -1,7 +1,3 @@
-# Em desenvolvimento
-
-Para a finalização deste projeto ainda é necessário a implementação de uma interface responsiva no Client-Side
-
 # Considerações iniciais
 
 Este projeto se consiste na criação de uma rede social, onde é possível interagir por meio de postagens e comentários, além também de outras funcionalidades
