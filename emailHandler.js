@@ -37,7 +37,7 @@ const sendEmail = (email, reason) => {
     message = {
         from: '<Insira o email utilizado>',
         to: `${email}`,
-        subject: reason == 'register' ? 'Confirmação de Email' : 'Trocar Senha',
+        subject: reason == 'register' ? 'Confirmação de Email' : 'Alteração de Senha',
         html: htmlEmail
     }
 

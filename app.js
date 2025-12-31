@@ -1134,6 +1134,7 @@ app.get('/userPosts/:userId', async (req, res) => {
 
             if (doc.likes.includes(clientId)) doc['isLiked'] = true
 
+            doc['createdAt'] = doc.createdAt.substring(0, 17)
             doc['likes'] = doc.likes.length
             doc['profileImg'] = accountDoc[0].profileImg
             doc['user'] = accountDoc[0].user
@@ -1173,6 +1174,7 @@ app.get('/userComments/:userId', async (req, res) => {
 
             if (doc.likes.includes(clientId)) doc['isLiked'] = true
 
+            doc['createdAt'] = doc.createdAt.substring(0, 17)
             doc['likes'] = doc.likes.length
             doc['profileImg'] = accountDoc[0].profileImg
             doc['user'] = accountDoc[0].user
@@ -1216,6 +1218,7 @@ app.get('/userReplies/:userId', async (req, res) => {
 
             if (doc.likes.includes(clientId)) doc['isLiked'] = true
 
+            doc['createdAt'] = doc.createdAt.substring(0, 17)
             doc['postId'] = commentsDoc[0].postId
             doc['likes'] = doc.likes.length
             doc['profileImg'] = accountDoc[0].profileImg
@@ -1257,6 +1260,7 @@ app.get('/userLikes/:userId', async (req, res) => {
                 const profileImgResult = accountColl.find({ _id: new ObjectId(postsDoc[0].userId) }).project({ profileImg: 1, user: 1 })
                 const profileImgDoc = await profileImgResult.toArray()
 
+                postsDoc[0]['createdAt'] = postsDoc[0].createdAt.substring(0, 17)
                 postsDoc[0]['likes'] = postsDoc[0].likes.length
                 postsDoc[0]['isLiked'] = true
                 postsDoc[0]['profileImg'] = profileImgDoc[0].profileImg
@@ -1275,6 +1279,7 @@ app.get('/userLikes/:userId', async (req, res) => {
                 const profileImgResult = accountColl.find({ _id: new ObjectId(commentsDoc[0].userId) }).project({ profileImg: 1, user: 1 })
                 const profileImgDoc = await profileImgResult.toArray()
 
+                commentsDoc[0]['createdAt'] = commentsDoc[0].createdAt.substring(0, 17)
                 commentsDoc[0]['likes'] = commentsDoc[0].likes.length
                 commentsDoc[0]['isLiked'] = true
                 commentsDoc[0]['profileImg'] = profileImgDoc[0].profileImg
@@ -1297,6 +1302,7 @@ app.get('/userLikes/:userId', async (req, res) => {
                 const commentsResult = commentsColl.find({ _id: new ObjectId(repliesDoc[0].commentId) }).project({ postId: 1 })
                 const commentsDoc = await commentsResult.toArray()
 
+                repliesDoc[0]['createdAt'] = repliesDoc[0].createdAt.substring(0, 17)
                 repliesDoc[0]['likes'] = repliesDoc[0].likes.length
                 repliesDoc[0]['isLiked'] = true
                 repliesDoc[0]['profileImg'] = profileImgDoc[0].profileImg
