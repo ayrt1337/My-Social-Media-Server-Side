@@ -628,10 +628,6 @@ app.post('/searchUsers', async (req, res) => {
     const result = accoutColl.find({ user: { $regex: `${value}`, $options: 'i' } }).project({ profileImg: 1, user: 1, followers: 1, following: 1, _id: 0, })
     const resultDoc = await result.toArray()
 
-    if (resultDoc.length > 4) {
-        resultDoc = resultDoc.splice(3)
-    }
-
     const arrUsers = []
 
     for await (const doc of resultDoc) {
