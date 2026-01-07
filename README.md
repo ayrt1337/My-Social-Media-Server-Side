@@ -22,9 +22,9 @@ No momento que for feito a criação de sua senha de aplicativo não divulgue em
 
 É possível realizar o download por aqui: https://www.mongodb.com/try/download/community-kubernetes-operator
 
-Após feito o download e instalação é preciso realizar a criação do banco de dados "mySocialMedia", mais detalhes sobre como fazer isso pode ser encontrado aqui: https://medium.com/@ishvini2000/mongodb-compass-create-database-and-insert-document-c4f92c29e6a
+Após feito o download e instalação é preciso realizar a criação do banco de dados "mySocialMedia" e da coleção "accounts", mais detalhes sobre como fazer isso pode ser encontrado aqui: https://medium.com/@ishvini2000/mongodb-compass-create-database-and-insert-document-c4f92c29e6a
 
-Lembre-se! É necessário apenas a criação do banco de dados, as coleções serão criadas automaticamente pelo código mediante utilização
+Lembre-se! É necessário apenas a criação do banco de dados e de uma coleção, as demais coleções serão criadas automaticamente pelo código mediante utilização
 
 ## Inicie o back-end
 
