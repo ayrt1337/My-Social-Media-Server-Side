@@ -20,12 +20,10 @@ const verifyCookie = async (cookie) => {
                     const accountResult = accountColl.find({ email: cookiesDoc[i].email }).project({ _id: 1 })
                     const accountDoc = await accountResult.toArray()
 
-                    await client.close()
                     return accountDoc[0]._id.toString()
                 }
 
                 else if (i == cookiesDoc.length - 1 && (cookiesDoc[i].cookies.length == 0 || j == cookiesDoc[i].cookies.length - 1) && await bcrypt.compare(cookie, docs[i].cookies[j]) == false) {
-                    await client.close()
                     return null
                 }
             }
