@@ -24,7 +24,7 @@ const sendEmail = (email, reason) => {
 
     const replacements = {
         email: reason == 'register' ? email : '',
-        image: reason == 'register' ? 'https://i.ibb.co/XrFNxWH0/10542536.png' : 'https://i.ibb.co/k234jXft/Design-sem-nome-5.png',
+        image: reason == 'register' ? 'https://i.postimg.cc/kGr19gp7/10542536.png' : 'https://i.postimg.cc/kgPjLGtv/Design-sem-nome-(5).png',
         title: reason == 'register' ? 'Verifique seu email para finalizar seu cadastro' : 'Solicitação de alteração de senha',
         text: reason == 'register' ? `Por favor confirme que ` : 'Para alterar sua senha clique no botão abaixo dentro de 10 minutos',
         text2: reason == 'register' ? ` é o seu email clicando no botão abaixo dentro de 10 minutos` : '',
